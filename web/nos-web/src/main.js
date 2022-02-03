@@ -3,12 +3,12 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+// 引入ElementUI组件
+import "./utils/elementui"
 
 Vue.config.productionTip = false
 
-// 引入ElementUI组件
-import { Button } from "element-ui";
-Vue.use(Button)
+
 
 /* eslint-disable no-new */
 new Vue({
