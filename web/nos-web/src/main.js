@@ -6,6 +6,10 @@ import router from './router'
 
 Vue.config.productionTip = false
 
+// 引入ElementUI组件
+import { Button } from "element-ui";
+Vue.use(Button)
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
