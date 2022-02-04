@@ -8,13 +8,14 @@ import "./utils/elementui"
 // 引入全局css样式
 import global from '../static/css/global.css'
 Vue.config.productionTip = false
-
-
+// 引入store.js
+import store from './store/store'
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })
