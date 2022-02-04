@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import cContainer from './views/main/container.vue'
+import cContainer from './components/views/main/container.vue'
 export default {
   name: 'App',
   components: { cContainer }
