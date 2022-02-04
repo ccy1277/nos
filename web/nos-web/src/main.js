@@ -5,7 +5,8 @@ import App from './App'
 import router from './router'
 // 引入ElementUI组件
 import "./utils/elementui"
-
+// 引入全局css样式
+import global from '../static/css/global.css'
 Vue.config.productionTip = false
 
 
