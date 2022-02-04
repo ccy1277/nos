@@ -10,6 +10,7 @@ import global from '../static/css/global.css'
 Vue.config.productionTip = false
 // 引入store.js
 import store from './store/store'
+import "./utils/adaption"
 
 /* eslint-disable no-new */
 new Vue({
