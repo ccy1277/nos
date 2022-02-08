@@ -1,9 +1,0 @@
-/* 全局css样式 */
-*{
-    margin: 0;
-    padding: 0;
-}
-html, body{
-    margin: auto;
-    overflow: hidden;
-}

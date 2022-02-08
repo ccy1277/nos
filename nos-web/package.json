@@ -1,0 +1,29 @@
+{
+  "name": "nos-web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve --mode dev",
+    "build": "vue-cli-service build --mode prod",
+    "build:dev": "vue-cli-service build --mode dev",
+    "report": "vue-cli-service build --mode report",
+    "inspect:dev": "vue-cli-service inspect --mode dev >> webpack.config.dev.js",
+    "inspect:prod": "vue-cli-service inspect --mode prod >> webpack.config.prod.js"
+  },
+  "dependencies": {
+    "axios": "^0.25.0",
+    "element-ui": "^2.15.6",
+    "vue": "^2.6.11",
+    "vue-router": "^4.0.12",
+    "vuex": "^4.0.2"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.5.0",
+    "@vue/cli-service": "^4.5.0",
+    "image-webpack-loader": "^8.1.0",
+    "optimize-css-assets-webpack-plugin": "^6.0.1",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "vue-template-compiler": "^2.6.11",
+    "webpack-bundle-analyzer": "^4.5.0"
+  }
+}
