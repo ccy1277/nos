@@ -1,7 +1,7 @@
 <template>
     <el-row class="container">
         <el-col class="header" :span="24">
-            <el-col class="header-logo" :span="10" :class="{'shut-aside': !isAside}">
+            <el-col class="header-logo" :span="10" :class="{'shut-logo': !isAside}">
                 {{ isAside ? sysName : sysShortName}}
             </el-col>
             <el-col :span="4">
@@ -25,8 +25,8 @@
             </el-col>
         </el-col>
         <el-col class="main" :span="24">
-            <el-col class="aside" :class="{'shut-aside': !isAside}">
-                Aside
+            <el-col :class="isAside ? 'aside' : 'menu-shut'">
+                <aside-Menu :isAside="isAside"></aside-Menu>
             </el-col>
             <el-col class="body" :span="24">
                 <el-card class="main-content">
@@ -42,7 +42,10 @@
 </template>
 
 <script>
+import AsideMenu from '../../components/main/aside-menu.vue'
+
 export default {
+    components: {AsideMenu},
     data(){
         return {
             msg: 'main',
@@ -113,9 +116,9 @@ export default {
         overflow: hidden;
     }
     .aside{
-        width: 270px;
+        width: 250px;
+        flex: 0 0 250px;
         background-color: rgb(230, 222, 222);
-        color: #000;
     }
     .body{
         background-color: antiquewhite;
@@ -124,8 +127,12 @@ export default {
         margin: 10px;
     }
 
-
-    .shut-aside{
+    .menu-shut {
+        width: 70px;
+        flex: 0 0 70px;
+    }
+    
+    .shut-logo{
         width: 70px;
     }
 </style>
