@@ -10,16 +10,16 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const path = require('path');
 const { dirname } = require('path');
 
-// cdn 需要打包的资源cdn地址
+// cdn 
 const cdn = {
     css: [
         '//lib.baomitu.com/element-ui/2.12.0/theme-chalk/index.css'
     ],
     js: [
         '//lib.baomitu.com/vue/2.6.11/vue.min.js',
-        '//lib.baomitu.com/vuex/4.0.2/vuex.min.js',
+        '//lib.baomitu.com/vuex/3.0.1/vuex.min.js',
         '//lib.baomitu.com/axios/0.25.0/axios.min.js',
-        '//lib.baomitu.com/vue-router/4.0.12/vue-router.min.js',
+        '//lib.baomitu.com/vue-router/3.1.3/vue-router.min.js',
         '//lib.baomitu.com/element-ui/2.15.6/index.js'
     ]
 };
@@ -46,7 +46,7 @@ module.exports = {
          */
         config.output = {
             path: config.output.path,
-            public: config.output.publicPath,
+            publicPath: config.output.publicPath,
             /** chunkFilename 指未被列在entry中，却又需要被打包出来的 chunk 文件的名称。一般来说，
              *  这个 chunk 文件指的就是要懒加载的代码。 */
             chunkFilename: 'js/[name].[hash:8].js',
@@ -80,7 +80,7 @@ module.exports = {
                 },
                 sourceMap: false,
                 //使用多进程并行运行来提高构建速度
-                parallel: true
+                parallel: true,
             }),
             /**压缩css文件 */
             new OptimizeCssPlugin()
@@ -94,10 +94,12 @@ module.exports = {
                 })
             )
         }
-
-        return {
-            plugin: plugs
+        if(!isDev){
+            return {
+                plugins: plugs
+            }
         }
+        
     },
     /**
      * Vue CLI 内部的 webpack 配置是通过 webpack-chain (链式操作)维护的。这个库提供了一个 webpack 原始
