@@ -3,18 +3,14 @@
              :default-active="menuActiveName || 'home'"
              :collapse-transition="false"
              :collapse="isAside">
-             <!-- @click="$router.push({name: $config.homeName})" -->
-        <el-menu-item :index="homeName" class="menu-item">
+             <!-- @click="$router.push({name: homeName)" -->
+        <el-menu-item :index="homeName" class="menu-item" @click="$router.push({name: homeName})">
             <i class="el-icon-s-grid"></i>
             <span v-if="isAside">首页</span>
         </el-menu-item>
-        <el-menu-item :index="'1s'" class="menu-item">
+        <el-menu-item :index="ds" class="menu-item">
             <i class="el-icon-s-grid"></i>
             <span v-if="isAside">首页2</span>
-        </el-menu-item>
-        <el-menu-item :index="'2s'" class="menu-item">
-            <i class="el-icon-s-grid"></i>
-            <span v-if="isAside">首页3</span>
         </el-menu-item>
     </el-menu>
 </template>

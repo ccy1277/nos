@@ -18,5 +18,6 @@
     margin: 0;
     padding: 0;
     font-family: sans-serif, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun;
+    background-color: antiquewhite;
   }
 </style>

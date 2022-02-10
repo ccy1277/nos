@@ -61,7 +61,7 @@ module.exports = {
         config.externals = {
             'vue': 'Vue',
             'vuex': 'Vuex',
-            'axios': 'Axios',
+            'axios': 'axios',
             'element-ui': 'ELEMENT',
             'vue-router': 'VueRouter'
         }
@@ -94,10 +94,9 @@ module.exports = {
                 })
             )
         }
-        if(!isDev){
-            return {
-                plugins: plugs
-            }
+        
+        return {
+            plugins: plugs
         }
         
     },
