@@ -1,6 +1,6 @@
 <template>
     <el-col>
-        我是home      
+        我是message     
     </el-col>
 </template>
 

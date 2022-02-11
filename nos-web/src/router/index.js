@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import {constRouter, mainRouter} from "./routers"
 import config from '../config'
+import {ifLogin} from '../utils/utils'
 
 Vue.use(VueRouter);
 
@@ -21,16 +22,15 @@ const router = new VueRouter({
     routes: mainRouter.concat(constRouter)
 });
 
-let loginName = config.loginName;
 router.beforeEach((to, from, next)=>{
-    if(loginName === to.name || router.options.ifLogin){
-      console.log(112);
-      next();
-    }else{
-      router.options.ifLogin = true;
-      console.log(222);
-      next({name: loginName});
-    }
+  // 是否登录
+  if(config.loginName === to.name || ifLogin()){
+    console.log(to);
+    next();
+  }else{
+    console.log(to);
+    next({name: config.loginName});
+  }
 });
 
 export default router

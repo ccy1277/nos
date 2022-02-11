@@ -20,6 +20,7 @@
 <script>
 import {success, error } from '../../utils/message'
 import {setUser} from '../../utils/utils'
+import {login} from '../../api/user/user'
 
 export default {
     data() {
@@ -60,8 +61,14 @@ export default {
         this.$refs[formName].validate((valid) => {
           if (valid) {
             success("登录成功");
-            console.log(this.dataForm);
             setUser(this.dataForm);
+            this.$router.push({name: 'home'});
+
+            // login(this.dataForm, function(res){
+            //   console.log(res);
+            // }, function(err){
+            //   console.log(err);
+            // });
           } else {
             return false;
           }

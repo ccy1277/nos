@@ -9,7 +9,9 @@ const OptimizeCssPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const path = require('path');
 const { dirname } = require('path');
-
+console.log(env);
+console.log(isProd);
+console.log(isDev);
 // cdn 
 const cdn = {
     css: [
@@ -69,19 +71,6 @@ module.exports = {
         console.error("\n   运行环境：" + env + "\n");
 
         let plugs = [
-            /**配置了去除线上环境的打印信息。 */
-            new UglifyJsPlugin({
-                uglifyOptions: {
-                    warnings: false,
-                    compress: {
-                        drop_console: true,
-                        drop_debugger: true
-                    },
-                },
-                sourceMap: false,
-                //使用多进程并行运行来提高构建速度
-                parallel: true,
-            }),
             /**压缩css文件 */
             new OptimizeCssPlugin()
         ];
@@ -94,7 +83,24 @@ module.exports = {
                 })
             )
         }
-        
+        if (isProd) {
+            plugs.push(
+                /**配置了去除线上环境的打印信息。 */
+                new UglifyJsPlugin({
+                    uglifyOptions: {
+                        warnings: false,
+                        compress: {
+                            drop_console: true,
+                            drop_debugger: true
+                        },
+                    },
+                    sourceMap: false,
+                    //使用多进程并行运行来提高构建速度
+                    parallel: true,
+                }),
+            )
+        }
+            
         return {
             plugins: plugs
         }
