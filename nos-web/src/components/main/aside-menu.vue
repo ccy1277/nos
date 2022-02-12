@@ -3,11 +3,6 @@
              :default-active="menuActiveName || 'home'"
              :collapse-transition="false"
              :collapse="isAside">
-             <!-- @click="$router.push({name: homeName)" -->
-        <!-- <el-menu-item :index="homeName" class="menu-item" @click="$router.push({name: homeName})">
-            <i class="el-icon-s-grid"></i>
-            <span v-if="isAside">首页</span>
-        </el-menu-item> -->
         <el-menu-item :index="menu.name" class="menu-item" v-for="(menu, index) in navMenu" :key="index" @click="handleNav(menu.name)">
             <i :class="menu.icon"></i>
             <span v-if="isAside">{{ menu.title }}</span>

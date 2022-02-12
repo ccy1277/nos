@@ -29,12 +29,13 @@
                 <aside-Menu :isAside="isAside"></aside-Menu>
             </el-col>
             <el-col class="body" :span="24">
-                <el-card class="main-content">
-                    <!-- 内容显示区域 -->
-                    <transition name="fade" mode="out-in">
-                        <router-view/>
-                    </transition>
-                </el-card>
+                <!-- 内容显示区域 -->
+                <transition name="fade" mode="out-in">
+                    <router-view/>
+                </transition>
+                <el-col class="main-bottom">
+                    <span>2022 小说运营系统 ccy出品</span>
+                </el-col>
             </el-col>
         </el-col>          
     </el-row>
@@ -49,7 +50,7 @@ export default {
     data(){
         return {
             msg: 'main',
-            sysName: '实验室预约系统',
+            sysName: '小说运营系统',
             sysShortName: 'nos',
             isAside: true
         }
@@ -121,11 +122,19 @@ export default {
         background-color: rgb(230, 222, 222);
     }
     .body{
+        position: relative;
         background-color: antiquewhite;
     }
-    .main-content{
-        margin: 10px;
+    .main-bottom{
+        position: absolute;
+        height: 30px;
+        line-height: 30px;
+        bottom: 0;
+        border-top: 1px white solid;
+        text-align: center;
+        cursor: default;
     }
+
 
     .menu-shut {
         width: 70px;
