@@ -30,9 +30,12 @@
             </el-col>
             <el-col class="body" :span="24">
                 <!-- 内容显示区域 -->
-                <transition name="fade" mode="out-in">
-                    <router-view/>
-                </transition>
+                <div class="main-content">
+                    <transition name="fade" mode="out-in">
+                        <router-view/>
+                    </transition>
+                </div>
+                
                 <el-col class="main-bottom">
                     <span>2022 小说运营系统 ccy出品</span>
                 </el-col>
@@ -125,14 +128,20 @@ export default {
         position: relative;
         background-color: antiquewhite;
     }
+    .main-content{
+        height: 95%;
+        overflow-y: scroll;
+    }
     .main-bottom{
-        position: absolute;
+        position: fixed;
         height: 30px;
         line-height: 30px;
         bottom: 0;
         border-top: 1px white solid;
         text-align: center;
         cursor: default;
+        z-index: 1000;
+        background-color: rgb(46, 54, 54);
     }
 
 
