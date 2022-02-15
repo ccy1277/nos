@@ -25,14 +25,14 @@
                         <img src="../../assets/imgs/profile.jpg" alt="sry" >
                         <span class="my-content">ccy1277</span>
                     </el-col>
-                    <el-descriptions  :column="4" class="profile">
-                        <el-descriptions-item label="性别:" label-class-name="my-label" content-class-name="my-content" :span="2">男</el-descriptions-item>
-                        <el-descriptions-item label="年龄:" label-class-name="my-label" content-class-name="my-content" :span="2">20</el-descriptions-item>
-                        <el-descriptions-item label="手机号码:" label-class-name="my-label" content-class-name="my-content" :span="2">19967294663</el-descriptions-item>
-                        <el-descriptions-item label="邮箱:" label-class-name="my-label" content-class-name="my-content" :span="2">ccy1277@139.com</el-descriptions-item>
+                    <el-descriptions  :column="2" class="profile">
+                        <el-descriptions-item label="性别:" label-class-name="my-label" content-class-name="my-content" :span="1">男</el-descriptions-item>
+                        <el-descriptions-item label="年龄:" label-class-name="my-label" content-class-name="my-content" :span="1">20</el-descriptions-item>
+                        <el-descriptions-item label="手机号码:" label-class-name="my-label" content-class-name="my-content" :span="1">19967294663</el-descriptions-item>
+                        <el-descriptions-item label="邮箱:" label-class-name="my-label" content-class-name="my-content" :span="1">ccy1277@139.com</el-descriptions-item>
                         <el-descriptions-item label="地区:" label-class-name="my-label" content-class-name="my-content" :span="1">湖南株洲</el-descriptions-item>
                         <el-descriptions-item label="权限:" label-class-name="my-label" content-class-name="my-content" :span="1">超管</el-descriptions-item>
-                        <el-descriptions-item label="入职时间:" label-class-name="my-label" content-class-name="my-content" :span="2">2022-02-22</el-descriptions-item>
+                        <el-descriptions-item label="入职时间:" label-class-name="my-label" content-class-name="my-content" :span="1">2022-02-22</el-descriptions-item>
                     </el-descriptions>
                 </el-card>
             </el-col>
@@ -90,15 +90,17 @@ export default {
 
 <style scoped>
     .home{
+        height: 100%;
+        overflow-y: scroll;
         cursor: default;
     }
     .box-m{
         height: 300px;
-        margin: 10px;
+        margin: 3px;
     }
     .box-s{
         height: 200px;
-        margin: 10px;
+        margin: 3px;
     }
     .title{
         color: gray;

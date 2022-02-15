@@ -126,11 +126,11 @@ export default {
     }
     .body{
         position: relative;
-        background-color: antiquewhite;
+        background-color: rgb(240, 236, 236);
     }
     .main-content{
         height: 95%;
-        overflow-y: scroll;
+        overflow: hidden;
     }
     .main-bottom{
         position: fixed;
@@ -143,7 +143,6 @@ export default {
         z-index: 1000;
         background-color: rgb(46, 54, 54);
     }
-
 
     .menu-shut {
         width: 70px;
