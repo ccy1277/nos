@@ -32,7 +32,7 @@
                         <el-descriptions-item label="邮箱:" label-class-name="my-label" content-class-name="my-content" :span="1">ccy1277@139.com</el-descriptions-item>
                         <el-descriptions-item label="地区:" label-class-name="my-label" content-class-name="my-content" :span="1">湖南株洲</el-descriptions-item>
                         <el-descriptions-item label="权限:" label-class-name="my-label" content-class-name="my-content" :span="1">超管</el-descriptions-item>
-                        <el-descriptions-item label="入职时间:" label-class-name="my-label" content-class-name="my-content" :span="1">2022-02-22</el-descriptions-item>
+                        <el-descriptions-item label="加入时间:" label-class-name="my-label" content-class-name="my-content" :span="1">2022-02-22</el-descriptions-item>
                     </el-descriptions>
                 </el-card>
             </el-col>

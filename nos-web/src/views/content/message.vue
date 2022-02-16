@@ -27,15 +27,8 @@
         </el-col>
         <el-col class="msg-col" :span="24">
             <el-card class="msg-table">
-                <el-table :data="tableData" border style="width: 99%">
-                    <el-table-column prop="id" label="id" width="180"></el-table-column>
-                    <el-table-column prop="name" label="名字" width="180"></el-table-column>
-                    <el-table-column prop="update_time" label="最新更新时间"></el-table-column>
-                    <el-table-column prop="list" label="榜单"></el-table-column>
-                    <el-table-column prop="cat" label="分类"></el-table-column>
-                    <el-table-column prop="author_name" label="作者"></el-table-column>
-                    <el-table-column prop="status" label="状态"></el-table-column>
-                    <el-table-column prop="intro" label="简介"></el-table-column>
+                <el-table :data="tableData" border style="width: 99%" @cell-click="handcell">
+                    <el-table-column v-for="column in columns" :prop="column.prop" :label="column.label" :width="column.width" :key="column"></el-table-column>
                 </el-table>
             </el-card>
         </el-col> 
@@ -46,10 +39,11 @@
 export default {
     data() {
         return {
+            columns: this.$config.msgColumns.novelColumns,
             searchData: {
                 key: 'novel',
-                value: '', // 关键搜索 
-                values: '' // 快捷搜索
+                value: '',  // 关键搜索 
+                values: ''  // 快捷搜索
             },
             options: [
                 {
@@ -92,8 +86,25 @@ export default {
                     label: '收藏榜'
                 }]
             }],
-            tableData: []
+            tableData: [{
+                id: 1,
+                name: 1
+            },{
+                id: 2,
+                name: 2
+            }]
             }
+    },
+    methods: {
+        handcell(row, column, cell, event){
+            console.log(row, column, cell, event);
+            this.columns = this.$config.msgColumns.userColumns;
+        }
+    },
+    watch: {
+        'columns': function(val){
+            console.log(val);
+        }
     }
 }
 </script>

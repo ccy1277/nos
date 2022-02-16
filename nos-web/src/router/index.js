@@ -25,10 +25,8 @@ const router = new VueRouter({
 router.beforeEach((to, from, next)=>{
   // 是否登录
   if(config.loginName === to.name || ifLogin()){
-    console.log(to);
     next();
   }else{
-    console.log(to);
     next({name: config.loginName});
   }
 });
