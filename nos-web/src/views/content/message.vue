@@ -126,9 +126,10 @@ export default {
     }
     .msg-col{
         margin: 3px 3px;
+        height: 100%;
     }
     .msg-table{
-        min-height: 600px;
+        height: 100%;
         
     }
 </style>
