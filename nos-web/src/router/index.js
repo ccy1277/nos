@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import {constRouter, mainRouter} from "./routers"
 import config from '../config'
 import {ifLogin} from '../utils/utils'
+import store from '../store'
 
 Vue.use(VueRouter);
 
@@ -23,6 +24,8 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next)=>{
+  // 使侧边栏active状态与路由一致
+  store.state.currentAsideNav = to.name || config.homeName;
   // 是否登录
   if(config.loginName === to.name || ifLogin()){
     next();

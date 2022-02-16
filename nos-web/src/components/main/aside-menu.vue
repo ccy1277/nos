@@ -1,6 +1,6 @@
 <template>
      <el-menu unique-opened
-             :default-active="menuActiveName || 'home'"
+             :default-active="asideNav || 'home'"
              :collapse-transition="false"
              :collapse="isAside">
         <el-menu-item :index="menu.name" class="menu-item" v-for="(menu, index) in navMenu" :key="index" @click="handleNav(menu.name)">
@@ -23,7 +23,6 @@ export default {
     data(){
         return {
             menuActiveName: '',
-            homeName: this.$config.homeName,
             navMenu: this.$config.navMenu
         }
     },
@@ -32,8 +31,10 @@ export default {
             this.$router.push({name: name});
         }
     },
-    created(){
-        
+    computed: {
+        asideNav(){
+            return this.$store.state.currentAsideNav;
+        }
     }
 }
 
