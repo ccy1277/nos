@@ -19,7 +19,7 @@
                         接收者：<el-tag>vip用户</el-tag><br/>
                         发布时间：<el-tag type="info">2022-01-02 23:25:04</el-tag>
                     </div>
-                    <el-input type="textarea" :autosize="{ minRows: 9, maxRows: 9}" placeholder="通知正文" v-model="value4" readonly></el-input>
+                    <el-input type="textarea" rows="9" resize="none" placeholder="通知正文" v-model="value4" readonly></el-input>
                 </el-col>
             </el-tab-pane>
             <el-tab-pane label="发布通知">
@@ -35,7 +35,7 @@
                 </el-col>
                 <el-col>
                     <span class="information-title">通知正文：</span>
-                    <el-input type="textarea" :autosize="{ minRows: 16, maxRows: 16}" placeholder="请输入内容" v-model="value2"></el-input>
+                    <el-input type="textarea" rows="16" resize="none" placeholder="请输入内容" v-model="value2"></el-input>
                 </el-col>
                 <el-button type="primary" class="information-submit">发布</el-button>
             </el-tab-pane>
