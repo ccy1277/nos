@@ -12,7 +12,7 @@ create table user(
 create table user_msg(
     id varchar(20) primary key comment 'phone',
     name varchar(20) not null unique,
-    sex varchar(5) not null,
+    sex varchar(3) not null,
     age int not null,
     email varchar(25) not null unique,
     area varchar(10) not null,
@@ -54,13 +54,13 @@ create table notice(
 create table transaction(
     id int primary key auto_increment,
     user_id varchar(20) not null,
-    novel_id bigint not null,
+    novel_id int not null,
     mon_ticket int not null comment '单笔月票数',
     time timestamp not null default CURRENT_TIMESTAMP
 );
 -- 创建书架表
 create table bookshelf(
-    id bigint comment '用户id',
-    novel_id bigint comment '小说id',
+    id varchar(20) comment '用户id',
+    novel_id int comment '小说id',
     primary key(id, novel_id)
 );
