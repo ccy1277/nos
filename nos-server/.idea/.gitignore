@@ -6,3 +6,17 @@
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+*/.gradle
+**/*.iml
+**/out/
+**/build/
+logs/*
+build/*
+classes/*
+docker/*.jar
