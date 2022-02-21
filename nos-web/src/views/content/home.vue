@@ -2,11 +2,10 @@
     <el-row class="home">
         <el-col :span="24">
             <el-col :span="10">
-                <el-card class="box-s" :body-style="{padding: '0'}">
-                    <!-- <div class="title" style="">个人信息</div> -->
+                <div class="box-s" :body-style="{padding: '0'}">
                     <el-col class="profile-img">
                         <img src="../../assets/imgs/profile.jpg" alt="sry" >
-                        <span class="my-content">欢迎您 ccy1277</span>
+                        <span class="my-content">欢迎您! ccy1277</span>
                     </el-col>
                     <el-descriptions :column="2" class="profile">
                         <el-descriptions-item label="性别:" label-class-name="my-label" content-class-name="my-content" :span="1">男</el-descriptions-item>
@@ -17,24 +16,37 @@
                         <el-descriptions-item label="权限:" label-class-name="my-label" content-class-name="my-content" :span="1">超管</el-descriptions-item>
                         <el-descriptions-item label="加入时间:" label-class-name="my-label" content-class-name="my-content" :span="1">2022-02-22</el-descriptions-item>
                     </el-descriptions>
-                </el-card>
-            </el-col>  
+                </div>
+            </el-col>
+            <el-col :span="13" :push="1">
+                <el-carousel interval="7000" arrow="never" trigger="click">
+                    <el-carousel-item v-for="item in 4 " :key="item">
+                        <h3 class="swift">昨夜雨疏风骤 浓睡不消残酒</h3>
+                    </el-carousel-item>
+                </el-carousel>
+
+            </el-col> 
         </el-col>
-        <el-col :span="18">
-            <el-card class="box-m" :body-style="{padding: '0'}">
-                <div class="title">最新通知</div>
+        <el-col :span="12">
+            <div class="box-m" :body-style="{padding: '0'}">
+                <div class="title el-icon-message"> 最新通知</div>
                 <el-col :span="22" :push="1">
                     <div class="information-text">
                         <el-input v-model="noticeText" type="textarea" readonly rows="7" resize="none"></el-input>
                     </div>
                     <i  class="more-informaion">更多通知</i>
                 </el-col>
-            </el-card>
+            </div>
         </el-col>
-        <el-col :span="6">
+        <el-col :span="4" :push="8">
             <el-card class="box-s" :body-style="{padding: '0'}">
                 <div class="title">网站数据</div>
-                <div class="db">999999</div>
+                <div class="db">
+                    <span class="db">今日总月票量：</span><span>2</span><br/>
+                    <span class="db">今日总月票量：</span><span>2</span><br/>
+                    <span class="db">今日总月票量：</span><span>2</span><br/>
+                    <span class="db">今日总月票量：</span><span>2</span>
+                </div>
             </el-card>
         </el-col>
         <el-col :span="24">
@@ -70,6 +82,8 @@ export default {
         overflow-y: scroll;
         cursor: default;
         background-image: url("../../assets/imgs/home.png");
+        background-repeat:no-repeat;
+        background-size: 100% auto;
     }
     .box-m{
         height: 300px;
@@ -88,10 +102,19 @@ export default {
     }
     .db{
         font-weight: 600;
+        letter-spacing: 1px;
+        font-size: 16px;
+        line-height: 40px;
+        padding-left: 10px;
+    }
+    .swift{
+        color: black;
+        font-size: 25px;
         letter-spacing: 3px;
-        font-size: 22px;
-        line-height: 120px;
+        opacity: 0.75;
+        line-height: 250px;
         text-align: center;
+        margin: 0;
     }
     .profile{
         margin-left: 50px;
@@ -119,9 +142,10 @@ export default {
     .more-informaion{
         float: right; 
         cursor: pointer;
+        color: gray;
     }
     .more-informaion:hover{
-        color: aqua;
+        color: rgb(144, 180, 180);
     }
     .information-text{
         margin-top: 10px;
@@ -142,5 +166,8 @@ export default {
     }
     >>> .my-content{
         color: black;
+    }
+    >>> .el-textarea__inner{
+        background-color: rgb(0,0,0,0);
     }
 </style>
