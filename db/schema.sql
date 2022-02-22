@@ -5,7 +5,7 @@ use nos;
 -- 创建用户表
 create table user(
     id varchar(20) primary key,
-    pwd varchar(20) not null,
+    pwd blob not null,
     token longtext not null
 );
 -- 创建用户信息表
