@@ -14,7 +14,7 @@
     <context:component-scan base-package="org.ccy1277.nos_server.controller">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
-<!--    静态资源映射-->
+<!--    静态资源映射p-->
 <!--    将/image/路径下的资源映射成/img/** -->
     <mvc:resources mapping="/img/**" location="/image/" />
     <mvc:annotation-driven>

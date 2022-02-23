@@ -19,7 +19,8 @@
     </context:component-scan>
 
     <!--配置数据源-->
-    <context:property-placeholder location="jdbc.properties"/>
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
         <property name="driverClassName" value="${jdbc.driver}"/>
         <property name="url" value="${jdbc.url}"/>
