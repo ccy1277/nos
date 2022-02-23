@@ -1,8 +1,10 @@
 package org.ccy1277.nos_server.domain;
 
+import java.util.Arrays;
+
 public class User {
     private String id;
-    private String pwd;
+    private byte[] pwd;
     private String token;
 
     public String getId() {
@@ -13,11 +15,11 @@ public class User {
         this.id = id;
     }
 
-    public String getPwd() {
+    public byte[] getPwd() {
         return pwd;
     }
 
-    public void setPwd(String pwd) {
+    public void setPwd(byte[] pwd) {
         this.pwd = pwd;
     }
 
@@ -33,7 +35,7 @@ public class User {
     public String toString() {
         return "User{" +
                 "id='" + id + '\'' +
-                ", pwd='" + pwd + '\'' +
+                ", pwd=" + Arrays.toString(pwd) +
                 ", token='" + token + '\'' +
                 '}';
     }
