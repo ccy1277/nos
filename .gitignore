@@ -20,3 +20,6 @@ logs/*
 build/*
 classes/*
 docker/*.jar
+/nos-server/target/*
+/nos-server/src/test/*
+
