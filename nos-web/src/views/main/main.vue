@@ -19,7 +19,7 @@
                     <el-dropdown-menu slot="dropdown">
                         <el-dropdown-item>功能1</el-dropdown-item>
                         <el-dropdown-item>功能2</el-dropdown-item>
-                        <el-dropdown-item>退出登录</el-dropdown-item>
+                        <el-dropdown-item @click.native="exit">退出登录</el-dropdown-item>
                     </el-dropdown-menu>
                 </el-dropdown>
             </el-col>
@@ -47,6 +47,8 @@
 
 <script>
 import AsideMenu from '../../components/main/aside-menu.vue'
+import { success } from '../../utils/message'
+import { clearLsItem } from '../../utils/store'
 
 export default {
     components: {AsideMenu},
@@ -62,6 +64,11 @@ export default {
         setAside(){
             this.isAside = !this.isAside;
         },
+        exit(){
+            clearLsItem();
+            success("退出登录");
+            this.$router.push({name: '/'});
+        }
     }
 }
 </script>

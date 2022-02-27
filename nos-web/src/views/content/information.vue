@@ -3,10 +3,10 @@
         <el-tabs tab-position="right" type="border-card" class="information-tab">
             <el-tab-pane label="查看通知">
                 <el-col>
-                    <el-table :data="tableData" highlight-current-row style="width: 100%;" height="220">
-                        <el-table-column prop="date" label="通知列表" width="200"></el-table-column>
-                        <el-table-column prop="address"></el-table-column>
-                        <el-table-column prop="name" width="100"></el-table-column>
+                    <el-table :data="noticeData" highlight-current-row style="width: 100%;" height="220">
+                        <el-table-column prop="create_time" label="通知列表" width="200"></el-table-column>
+                        <el-table-column prop="notice_to"></el-table-column>
+                        <el-table-column prop="notice_from" width="100"></el-table-column>
                     </el-table>
                     <div class="information-page">
                         <el-pagination layout="prev, pager, next" :total="1000"></el-pagination>
@@ -44,6 +44,8 @@
 </template>
 
 <script>
+import { getNotices } from '../../api/notice/notice'
+import { success, error } from '../../utils/message'
 export default {
     data(){
         return {
@@ -66,32 +68,25 @@ export default {
             value1: [],
             value3: '',
             value2: '',
-            value4: '上海市普陀区金沙江路 1516 弄上海市普陀区金沙江路 1516 弄上海市普陀区金沙江路 1516 弄上海市普陀区金沙江路 1516 弄上海市普陀区金沙江路 1516 弄上海市普陀区金沙江路 1516 弄上海市普陀区金沙江路 1516 弄上海市普陀区金沙江路 1516 弄上海市普陀区金沙江路 1516 弄上海市普陀区金沙江路 1516 弄上海市普陀区金沙江路 1516 弄上海市普陀区金沙江路 1516 弄上海市普陀区金沙江路 1516 弄上海市普陀区金沙江路 1516 弄上海市普陀区金沙江路 1516 弄上海市普陀区金沙江路 1516 弄上海市普陀区金沙江路 1516 弄上海市普陀区金沙江路 1516 弄上海市普陀区金沙江路 1516 弄上海市普陀区金沙江路 1516 弄上海市普陀区金沙江路 1516 弄',
-            tableData: [{
-            date: '2016-05-02',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1518 弄'
-          }, {
-            date: '2016-05-04',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1517 弄'
-          },{
-            date: '2016-05-04',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1517 弄'
-          },{
-            date: '2016-05-04',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1517 弄'
-          }, {
-            date: '2016-05-01',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1519 弄'
-          }, {
-            date: '2016-05-03',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1516 弄'
-          }]
+            value4: '上海市普陀区金沙江路 1516 弄上海市普陀区金沙江路 1516 弄上海市普陀区金沙江路 1516 ',
+            noticeData: []
+        }
+    },
+    created(){
+        this.initNotices();
+    },
+    methods: {
+        initNotices(){
+            var that = this;
+            getNotices({}, function(res){
+                if(res.data.state == 1){
+                    that.noticeData = res.data.data;
+                }else{
+                    error("通知列表获取异常")
+                }
+            }, function(err){
+                console.log(err);
+            })
         }
     }
 }

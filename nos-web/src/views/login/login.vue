@@ -43,8 +43,8 @@ export default {
       };
       return {
         dataForm: {
-          username: 'ccy1277',
-          pass: '12771577'
+          username: '17716776553',
+          pass: 'ccy17716776553'
         },
         rules: {
           username: [
@@ -60,15 +60,19 @@ export default {
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            success("登录成功");
-            setUser(this.dataForm);
-            this.$router.push({name: 'home'});
-
-            // login(this.dataForm, function(res){
-            //   console.log(res);
-            // }, function(err){
-            //   console.log(err);
-            // });
+            var that = this;
+            login(this.dataForm, function(res){
+              console.log(res);
+              if(res.data.state == 1){
+                success(res.data.info);
+                setUser(res.data.data);
+                that.$router.push({name: that.$config.homeName});
+              }else{
+                error(res.data.info)
+              }
+            }, function(err){
+              console.log(err);
+            });
           } else {
             return false;
           }
