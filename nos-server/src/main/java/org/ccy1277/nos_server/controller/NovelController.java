@@ -1,6 +1,6 @@
 package org.ccy1277.nos_server.controller;
 
-import org.ccy1277.nos_server.domain.ResultInfo;
+import org.ccy1277.nos_server.util.ResultInfo;
 import org.ccy1277.nos_server.service.NovelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,30 +19,14 @@ public class NovelController {
     @RequestMapping(value = "/all")
     @ResponseBody
     public ResultInfo findAllNovels(){
-        resultInfo.setData(novelService.findAllNovels());
-        if(resultInfo.getData() != null){
-            resultInfo.setState(1);
-            resultInfo.setInfo("小说列表获取成功");
-        }else{
-            resultInfo.setState(-1);
-            resultInfo.setInfo("小说列表获取异常");
-        }
-
+        resultInfo.setResultInfo(novelService.findAllNovels(), "小说列表获取成功","查找的小说不存在");
         return resultInfo;
     }
 
     @RequestMapping(value = "/key")
     @ResponseBody
     public ResultInfo findNovelsByName(String keyName){
-        resultInfo.setData(novelService.findNovelsByName(keyName));
-        if(resultInfo.getData() != null){
-            resultInfo.setState(1);
-            resultInfo.setInfo("小说获取成功");
-        }else{
-            resultInfo.setState(-1);
-            resultInfo.setInfo("小说获取异常");
-        }
-
+        resultInfo.setResultInfo(novelService.findNovelsByName(keyName), "小说获取成功","查找的小说不存在");
         return resultInfo;
     }
 }

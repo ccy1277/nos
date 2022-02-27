@@ -1,6 +1,6 @@
 package org.ccy1277.nos_server.controller;
 
-import org.ccy1277.nos_server.domain.ResultInfo;
+import org.ccy1277.nos_server.util.ResultInfo;
 import org.ccy1277.nos_server.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,14 +19,7 @@ public class UserController {
     @RequestMapping(value="/login", method = RequestMethod.POST)
     @ResponseBody
     public ResultInfo login(String id, String pass){
-        if(resultInfo.getData() != null){
-            resultInfo.setState(1);
-            resultInfo.setInfo("登录成功");
-        }else{
-            resultInfo.setState(-1);
-            resultInfo.setInfo("登录失败");
-        }
-
+        resultInfo.setResultInfo(userService.Login(id, pass), "登录成功","登录失败");
         return resultInfo;
     }
 }

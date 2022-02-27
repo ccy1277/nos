@@ -1,4 +1,4 @@
-package org.ccy1277.nos_server.domain;
+package org.ccy1277.nos_server.util;
 
 import org.springframework.stereotype.Component;
 
@@ -10,6 +10,28 @@ public class ResultInfo implements Serializable {
     private Integer state;  // 1:success -1:error
     private Object data;
     private String info;
+
+    public void setResultInfo(Object data, Integer state, String success_info, String error_info){
+        this.data = data;
+        this.state = state;
+
+        if(state == 1){
+            this.info = success_info;
+        }else{
+            this.info = error_info;
+        }
+    }
+
+    public void setResultInfo(Object data, String success_info, String error_info){
+        this.data = data;
+        if(data == null){
+            this.state = -1;
+            this.info = error_info;
+        }else{
+            this.state = 1;
+            this.info = success_info;
+        }
+    }
 
     public Integer getState() {
         return state;
