@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class User_msg {
     private String id;
-    private String name;
+    private String username;
     private String sex;
     private Integer age;
     private String email;
@@ -22,12 +22,12 @@ public class User_msg {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getSex() {
@@ -98,7 +98,7 @@ public class User_msg {
     public String toString() {
         return "User_msg{" +
                 "id='" + id + '\'' +
-                ", name='" + name + '\'' +
+                ", name='" + username + '\'' +
                 ", sex='" + sex + '\'' +
                 ", age=" + age +
                 ", email='" + email + '\'' +

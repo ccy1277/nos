@@ -5,9 +5,8 @@ import org.ccy1277.nos_server.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class UserController {
@@ -17,11 +16,9 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value="/login")
+    @RequestMapping(value="/login", method = RequestMethod.POST)
     @ResponseBody
-    public ResultInfo login(HttpServletRequest request){
-        resultInfo.setData(userService.Login(request.getParameter("id"),
-                request.getParameter("pass")));
+    public ResultInfo login(String id, String pass){
         if(resultInfo.getData() != null){
             resultInfo.setState(1);
             resultInfo.setInfo("登录成功");
