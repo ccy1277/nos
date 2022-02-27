@@ -1,5 +1,5 @@
 import { setLsItem, getLsItem } from "./store";
-import { USER_KEY, TOKEN_KEY } from "../config";
+import { USER_KEY, MSG_KEY } from "../config";
 
 export const setUser = (user)=>{
     setLsItem(USER_KEY, user);
@@ -7,7 +7,15 @@ export const setUser = (user)=>{
 
 export const getUser = ()=>{
     return getLsItem(USER_KEY);
-}  
+}
+
+export const setMsg = (msg)=>{
+    setLsItem(MSG_KEY, msg);
+}
+
+export const getMsg = ()=>{
+    return getLsItem(MSG_KEY);
+}
 
 // 要使用函数来返回用户是否登录 （用变量返回登录状态时，导航守卫难以拿到变化后的登录状态(maybe)）
 export const ifLogin = ()=>{

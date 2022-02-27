@@ -82,5 +82,5 @@ export default {
 }
 
 export const USER_KEY = 'user';
-export const TOKEN_KEY = 'token';
-export const BASE_URL = '';
+export const MSG_KEY = 'msg';
+export const BASE_URL = 'http://localhost:8001/';
