@@ -4,11 +4,14 @@ import org.ccy1277.nos_server.util.ResultInfo;
 import org.ccy1277.nos_server.service.UserMsgService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping(value = "/users")
+@CrossOrigin
+@RequestMapping(value = "/users", method = RequestMethod.POST)
 public class UserMsgController {
     @Autowired
     private ResultInfo resultInfo;

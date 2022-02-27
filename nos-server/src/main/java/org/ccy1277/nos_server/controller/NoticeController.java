@@ -4,11 +4,14 @@ import org.ccy1277.nos_server.util.ResultInfo;
 import org.ccy1277.nos_server.service.NoticeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping(value = "/notices")
+@CrossOrigin
+@RequestMapping(value = "/notices", method = RequestMethod.POST)
 public class NoticeController {
     @Autowired
     private NoticeService noticeService;
@@ -16,7 +19,7 @@ public class NoticeController {
     @Autowired
     private ResultInfo resultInfo;
 
-    @RequestMapping(value = "/new")
+    @RequestMapping(value = "/new" )
     @ResponseBody
     public ResultInfo findNewNotice(){
         resultInfo.setResultInfo(noticeService.findNewestNotice(), "获取最新通知成功","最新通知获取异常");
