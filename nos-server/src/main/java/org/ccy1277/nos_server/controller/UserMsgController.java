@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @CrossOrigin
-@RequestMapping(value = "/users", method = RequestMethod.POST)
+@RequestMapping(value = "/users")
 public class UserMsgController {
     @Autowired
     private ResultInfo resultInfo;
@@ -19,21 +19,21 @@ public class UserMsgController {
     @Autowired
     private UserMsgService userMsgService;
 
-    @RequestMapping(value = "/key")
+    @RequestMapping(value = "/key", method = RequestMethod.GET)
     @ResponseBody
     public ResultInfo findUsersByKeyName(String keyName){
         resultInfo.setResultInfo(userMsgService.findUsersByKeyName(keyName), "获取用户信息成功","查找的用户不存在");
         return resultInfo;
     }
 
-    @RequestMapping(value = "/total")
+    @RequestMapping(value = "/total", method = RequestMethod.GET)
     @ResponseBody
     public ResultInfo findUsersByTotal(String total){
         resultInfo.setResultInfo(userMsgService.findUsersByTotal(total), "获取用户信息成功","查找的用户不存在");
         return resultInfo;
     }
 
-    @RequestMapping(value = "/id")
+    @RequestMapping(value = "/id", method = RequestMethod.GET)
     @ResponseBody
     public ResultInfo findUserById(String id){
         resultInfo.setResultInfo(userMsgService.findUserById(id), "获取用户信息成功","查找的用户不存在");

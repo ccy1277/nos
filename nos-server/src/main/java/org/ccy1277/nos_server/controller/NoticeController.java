@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @CrossOrigin
-@RequestMapping(value = "/notices", method = RequestMethod.POST)
+@RequestMapping(value = "/notices")
 public class NoticeController {
     @Autowired
     private NoticeService noticeService;
@@ -19,21 +19,21 @@ public class NoticeController {
     @Autowired
     private ResultInfo resultInfo;
 
-    @RequestMapping(value = "/new" )
+    @RequestMapping(value = "/new", method = RequestMethod.GET)
     @ResponseBody
     public ResultInfo findNewNotice(){
         resultInfo.setResultInfo(noticeService.findNewestNotice(), "获取最新通知成功","最新通知获取异常");
         return resultInfo;
     }
 
-    @RequestMapping(value = "/all")
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
     @ResponseBody
     public ResultInfo findAllNotices(){
         resultInfo.setResultInfo(noticeService.findNotices(), "获取通知列表成功","通知列表获取异常");
         return resultInfo;
     }
 
-    @RequestMapping(value = "/add")
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
     public ResultInfo addNotice(String from, String to, String content){
         resultInfo.setResultInfo(noticeService.addNotice(from, to, content), "发布通知成功","发布通知出现异常");

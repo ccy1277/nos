@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @CrossOrigin
-@RequestMapping(value = "novels", method = RequestMethod.POST)
+@RequestMapping(value = "novels")
 public class NovelController {
     @Autowired
     private NovelService novelService;
@@ -19,14 +19,14 @@ public class NovelController {
     @Autowired
     private ResultInfo resultInfo;
 
-    @RequestMapping(value = "/all")
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
     @ResponseBody
     public ResultInfo findAllNovels(){
         resultInfo.setResultInfo(novelService.findAllNovels(), "小说列表获取成功","查找的小说不存在");
         return resultInfo;
     }
 
-    @RequestMapping(value = "/key")
+    @RequestMapping(value = "/key", method = RequestMethod.GET)
     @ResponseBody
     public ResultInfo findNovelsByName(String keyName){
         resultInfo.setResultInfo(novelService.findNovelsByName(keyName), "小说获取成功","查找的小说不存在");
