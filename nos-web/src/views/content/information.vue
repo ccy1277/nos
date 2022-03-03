@@ -3,23 +3,24 @@
         <el-tabs tab-position="right" type="border-card" class="information-tab">
             <el-tab-pane label="查看通知">
                 <el-col>
-                    <el-table :data="noticeData" highlight-current-row style="width: 100%;" height="220">
+                    <el-table :data="noticeData" highlight-current-row style="width: 100%;" height="220" @row-click="handCol">
                         <el-table-column prop="create_time" label="通知列表" width="200"></el-table-column>
                         <el-table-column prop="notice_to"></el-table-column>
                         <el-table-column prop="notice_from" width="100"></el-table-column>
                     </el-table>
                     <div class="information-page">
-                        <el-pagination layout="prev, pager, next" :total="1000"></el-pagination>
+                        <el-pagination layout="prev, pager, next" :total="noticeData.length"></el-pagination>
                     </div>
                 </el-col>
                 <el-col>
                     <h3>通知1</h3>
                     <div class="information-text">
-                        发布者：<el-tag>ccy1277</el-tag><br/>
-                        接收者：<el-tag>vip用户</el-tag><br/>
-                        发布时间：<el-tag type="info">2022-01-02 23:25:04</el-tag>
+                        发布者：<el-tag class="tags">{{currentData.notice_from || 'from'}}</el-tag><br/>
+                        接收者：<el-tag class="tags" v-for="(item, index) in to_tags.tags" :key="index">{{ item }}</el-tag>
+                            <el-tag class="tags" v-if="to_tags.tags.length==0">{{ 'to' }}</el-tag><br/>
+                        发布时间：<el-tag type="info" class="tags">{{ currentData.create_time != null ? new Date(currentData.create_time).toLocaleString():'create_time' }}</el-tag>
                     </div>
-                    <el-input type="textarea" rows="9" resize="none" placeholder="通知正文" v-model="value4" readonly></el-input>
+                    <el-input type="textarea" rows="9" resize="none" placeholder="通知正文" v-model="currentData.content" readonly></el-input>
                 </el-col>
             </el-tab-pane>
             <el-tab-pane label="发布通知">
@@ -45,7 +46,8 @@
 
 <script>
 import { getNotices } from '../../api/notice/notice'
-import { success, error } from '../../utils/message'
+import { success, error, info } from '../../utils/message'
+
 export default {
     data(){
         return {
@@ -68,8 +70,16 @@ export default {
             value1: [],
             value3: '',
             value2: '',
-            value4: '上海市普陀区金沙江路 1516 弄上海市普陀区金沙江路 1516 弄上海市普陀区金沙江路 1516 ',
-            noticeData: []
+            newNotice: {
+                from: '',
+                to: '',
+                content: ''
+            },
+            noticeData: [],
+            currentData: {},
+            to_tags: {
+                tags: []
+            }
         }
     },
     created(){
@@ -87,6 +97,15 @@ export default {
             }, function(err){
                 console.log(err);
             })
+        },
+        handCol(row, column,event){
+            if(this.currentData.notice_id != row.notice_id){
+                this.currentData = row;
+                this.to_tags.tags = this.currentData.notice_to.split('-');
+                this.$set(this.to_tags, "tags", this.currentData.notice_to.split('-'))
+            }else{
+                info("已显示该条通知");
+            }
         }
     }
 }
@@ -114,5 +133,8 @@ export default {
     }
     .information-text{
         margin: 5px;
+    }
+    .tags{
+        margin: 2px 5px;
     }
 </style>

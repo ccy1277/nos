@@ -14,12 +14,12 @@
                         <el-descriptions-item label="邮箱:" label-class-name="my-label" content-class-name="my-content" :span="1">{{ personal_msg.email }}</el-descriptions-item>
                         <el-descriptions-item label="地区:" label-class-name="my-label" content-class-name="my-content" :span="1">{{ personal_msg.area }}</el-descriptions-item>
                         <el-descriptions-item label="权限:" label-class-name="my-label" content-class-name="my-content" :span="1">{{ personal_msg.is_admin ? '管理员' : '普通用户' }}</el-descriptions-item>
-                        <el-descriptions-item label="加入时间:" label-class-name="my-label" content-class-name="my-content" :span="1">{{ new Date(1645621001000).toLocaleString(personal_msg.entry_time) }}</el-descriptions-item>
+                        <el-descriptions-item label="加入时间:" label-class-name="my-label" content-class-name="my-content" :span="1">{{ new Date(personal_msg.entry_time).toLocaleString() }}</el-descriptions-item>
                     </el-descriptions>
                 </div>
             </el-col>
             <el-col :span="13" :push="1">
-                <el-carousel interval="7000" arrow="never" trigger="click">
+                <el-carousel interval="4000" arrow="never" trigger="click">
                     <el-carousel-item v-for="item in 4 " :key="item">
                         <h3 class="swift">昨夜雨疏风骤 浓睡不消残酒</h3>
                     </el-carousel-item>
@@ -75,17 +75,16 @@ export default {
     data(){
         return {
             personal_msg: '',
-            noticeText: ""
+            noticeText: ''
         }
     },
     created(){
         this.initUserMsg({id: getUser().id});
-        this.initNotice();
     },
     methods: {
-        initUserMsg(id){
+        async initUserMsg(id){
             var that = this;
-            getUserMsg(id, function(res){
+            await getUserMsg(id, function(res){
                 if(res.data.state == 1){
                     setMsg(res.data.data);
                     that.personal_msg = res.data.data;
@@ -95,6 +94,8 @@ export default {
             }, function(err){
                 console.log(err);
             });
+            
+            this.initNotice();
         },
         initNotice(){
             var that = this;

@@ -12,8 +12,19 @@ export const instance = axios.create({
     }
 });
 
-export const request = (url, method, params, success, error)=>{
-    return instance({
+// response 拦截器
+instance.interceptors.response.use(
+    response => {
+        // console.log(response.config.url)
+        // console.log(response.data)
+        return response;
+    },
+    err => {
+        return Promise.reject(err);
+    }
+);
+export const  request =  (url, method, params, success, error)=>{
+    return  instance({
         url: url,
         method: method,
         params: params,
